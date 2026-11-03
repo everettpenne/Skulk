@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".SkulkApp"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:description="@string/app_description"
+        android:category="social"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Skulk"
+        android:networkSecurityConfig="@xml/network_security_config">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            android:supportsPictureInPicture="true"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|uiMode">
+            <!-- Reddit links open in Skulk: https://reddit.com/r/<sub>, .../comments/<id>/..., and the short redd.it/<id>. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+                <data android:host="reddit.com" />
+                <data android:host="www.reddit.com" />
+                <data android:host="old.reddit.com" />
+                <data android:host="m.reddit.com" />
+                <data android:pathPrefix="/r/" />
+                <data android:pathPrefix="/u/" />
+                <data android:pathPrefix="/user/" />
+            </intent-filter>
+        </activity>
+        <!-- The Skulk icon: a lit, glassy sandworm on a dune. Exactly one alias is enabled at a time (see AppIcons); MainActivity itself stays enabled so links always open. -->
+        <activity-alias
+            android:name=".IconSkulk"
+            android:targetActivity=".MainActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <!-- The original sandworm icon: still the one that is enabled until a person picks another, so an update never swaps an icon off their Home screen. -->
+        <activity-alias
+            android:name=".IconSandworm"
+            android:targetActivity=".MainActivity"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_original"
+            android:roundIcon="@mipmap/ic_launcher_original"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <!-- Peeking worm, orange. Exactly one alias is enabled at a time (see AppIcons); MainActivity itself stays enabled so links always open. -->
+        <activity-alias
+            android:name=".IconPeekOrange"
+            android:targetActivity=".MainActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_peek_orange"
+            android:roundIcon="@mipmap/ic_launcher_peek_orange"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <!-- Peeking worm, pearl. Exactly one alias is enabled at a time (see AppIcons); MainActivity itself stays enabled so links always open. -->
+        <activity-alias
+            android:name=".IconPeekPearl"
+            android:targetActivity=".MainActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_peek_pearl"
+            android:roundIcon="@mipmap/ic_launcher_peek_pearl"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <!-- Peeking worm, blue. Exactly one alias is enabled at a time (see AppIcons); MainActivity itself stays enabled so links always open. -->
+        <activity-alias
+            android:name=".IconPeekBlue"
+            android:targetActivity=".MainActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_peek_blue"
+            android:roundIcon="@mipmap/ic_launcher_peek_blue"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+    </application>
+</manifest>
